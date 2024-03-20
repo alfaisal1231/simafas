@@ -42,16 +42,16 @@
                           </div>
   
                           <div class="form-group row mt-3">
-                            <label for="role_id" class="col-md-4 col-form-label text-right">Role</label>
+                            <label for="role" class="col-md-4 col-form-label text-right">Role</label>
                             <div class="col-md-6">
-                                <select class="form-select" id="role_id" name="role_id" aria-label="role_id">
+                                <select class="form-select" id="role" name="role" aria-label="role">
                                     <option value="">Choose</option>
                                     @foreach($roles as $val)
                                         <option value="{{$val->guid}}">{{$val->name}}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('role_id'))
-                                    <span class="text-danger">{{ $errors->first('role_id') }}</span>
+                                @if ($errors->has('role'))
+                                    <span class="text-danger">{{ $errors->first('role') }}</span>
                                 @endif
                             </div>
                           </div>

@@ -76,7 +76,7 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'role_id' => 'required|in:admin,dev,owner,user',
+            'role' => 'required|in:admin,dev,owner,user',
         ]);
            
         $data = $request->all();
@@ -111,7 +111,7 @@ class AuthController extends Controller
         'name' => $data['name'],
         'email' => $data['email'],
         'password' => Hash::make($data['password']),
-        'role_id' =>$data['role_id']
+        'role' =>$data['role']
       ]);
     }
     

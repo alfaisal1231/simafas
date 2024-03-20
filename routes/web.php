@@ -1,13 +1,30 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BioController;
+use App\Http\Controllers\RuangController;
 use App\Http\Controllers\UserController;
 
 
-Route::get('/cekdpt/{nik}/detail', [BiodataController::class, 'show']);
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/hello', [BioController::class, 'index']);
+
+Route::get('/checkdpt/{nik}/detail', [BioController::class, 'show']);
 Route::get('/', [AuthController::class, 'dashboard']); 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
@@ -16,14 +33,6 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 Route::get('dashboard', [AuthController::class, 'dashboard']); 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::resource('users', UserController::class);
-/* 
-GET|HEAD        users ................................................... users.index › UserController@index  
-POST            users ................................................... users.store › UserController@store  
-GET|HEAD        users/create .......................................... users.create › UserController@create  
-GET|HEAD        users/{user} .............................................. users.show › UserController@show  
-PUT|PATCH       users/{user} .......................................... users.update › UserController@update  
-DELETE          users/{user} ........................................ users.destroy › UserController@destroy  
-GET|HEAD        users/{user}/edit ......................................... users.edit › UserController@edit 
-
-*/
+Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::resource('users', UserController::class); //users.index, users.create, users.edit, users.update, users.destroy
+Route::get('ruangans', [RuangController::class, 'indexPage'])->name('ruangans.page');
